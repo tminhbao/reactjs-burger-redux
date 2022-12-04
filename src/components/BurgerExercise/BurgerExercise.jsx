@@ -50,6 +50,7 @@ class BurgerExercise extends Component {
     });
   };
   render() {
+    let { total } = this.props;
     return (
       <div className="container">
         <div className="row">
@@ -84,7 +85,7 @@ class BurgerExercise extends Component {
                   <td></td>
                   <td></td>
                   <td>Tổng cộng</td>
-                  <td>85</td>
+                  <td>{total}</td>
                 </tr>
               </tbody>
             </table>
@@ -98,6 +99,7 @@ class BurgerExercise extends Component {
 const mapStateToProps = (state) => ({
   burger: state.burgerReducer.burger,
   menu: state.burgerReducer.menu,
+  total: state.burgerReducer.total,
 });
 
 export default connect(mapStateToProps)(BurgerExercise);
