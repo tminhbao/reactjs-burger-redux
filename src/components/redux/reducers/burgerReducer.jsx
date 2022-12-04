@@ -9,15 +9,17 @@ const initialState = {
     cheese: 20,
     beef: 55,
   },
+  total: 85,
 };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case "ADD CHEESE": {
-      const newState = state;
-      newState.arrayBurger.cheese++;
-      state = newState;
-      return { ...state, ...payload };
+    case "CHANGE_QUANTITY": {
+      let { key, value } = payload;
+      let burgerUpdate = { ...state.burger };
+      burgerUpdate[key] += value;
+      state.burger = burgerUpdate;
+      return { ...state };
     }
 
     default:
